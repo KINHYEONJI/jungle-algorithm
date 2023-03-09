@@ -6,16 +6,14 @@ N, M = map(int, input().strip().split())
 
 temp= []
 
-def dfs(depth) :
+def dfs(depth, before) :
     if(depth == M) :
         print(' '.join(map(str, temp)))
         return
 
-    for i in range(1, N+1) :
-        if i not in temp :
-            temp.append(i)
-            dfs(depth+1)
-            temp.pop()
+    for i in range(before, N+1) :
+        temp.append(i)
+        dfs(depth+1, i)
+        temp.pop()
 
-dfs(0)
-
+dfs(0, 1)
